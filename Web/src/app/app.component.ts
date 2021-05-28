@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
+
+import { IconSetService } from '@coreui/icons-angular';
+import { freeSet } from '@coreui/icons';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  // tslint:disable-next-line
+  selector: 'body',
+  template: '<router-outlet></router-outlet>',
+  providers: [IconSetService],
 })
 export class AppComponent implements OnInit {
+  constructor(
+    private router: Router,
+    public iconSet: IconSetService
+  ) {
+    // iconSet singleton
+    iconSet.icons = { ...freeSet };
+  }
 
-     constructor(public location: Location) {}
-
-    ngOnInit(){
-    }
-
-    isMap(path){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      titlee = titlee.slice( 1 );
-      if(path == titlee){
-        return false;
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
       }
-      else {
-        return true;
-      }
-    }
+      window.scrollTo(0, 0);
+    });
+  }
 }
