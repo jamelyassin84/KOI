@@ -1,0 +1,44 @@
+<app-page-title heading="Koi Diseases" subheading="List down disease with its cure  for a specific Koi" icon="pe-7s-vector icon-gradient bg-love-kiss"></app-page-title>
+<div class="card card-body shadow">
+    <div class="form-group">
+        <div class="row m-0 p-1">
+            <input type="text" class="form-control col-md-5" />
+            <div class="col-md-2">
+                <button class="btn btn-danger mr-2">Add Disease & Cure</button>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped bg-white table-responsive">
+        <thead class="table-danger">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Koi</th>
+                <th scope="col">Disease</th>
+                <th scope="col">Cure</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of [1, 2, 3, 4, 5, 6]; index as i">
+                <td>
+                    <img class="avatar" src="../../../assets/images/Fish/1.jpg" />
+                </td>
+                <td>Japanese Koi</td>
+                <td>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur consequuntur nihil, quasi earum facilis dolore dolores odit maiores voluptatibus atque fugiat, praesentium quidem recusandae odio, est nemo neque numquam. Praesentium!
+                </td>
+                <td>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur consequuntur nihil, quasi earum facilis dolore dolores odit maiores voluptatibus atque fugiat, praesentium quidem recusandae odio, est nemo neque numquam. Praesentium!
+                </td>
+                <td class="d-flex">
+                    <button class="btn btn-sm btn-info mr-2">
+						<i class="pe-7s-pen"></i>
+					</button>
+                    <button class="btn btn-sm btn-danger mr-2">
+						<i class="pe-7s-trash"></i>
+					</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

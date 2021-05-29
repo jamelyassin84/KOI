@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-login-boxed',
-  templateUrl: './login-boxed.component.html',
-  styles: []
+	selector: 'app-login-boxed',
+	templateUrl: './login-boxed.component.html',
+	styles: [],
 })
 export class LoginBoxedComponent implements OnInit {
+	constructor(private router: Router) {}
 
-  constructor() { }
+	ngOnInit() {}
 
-  ngOnInit() {
-  }
-
+	login() {
+		this.router.navigate(['home/kois'])
+	}
 }

@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ThemeOptions} from '../../../../../theme-options';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { ThemeOptions } from '../../../../../theme-options'
 
 @Component({
-  selector: 'app-user-box',
-  templateUrl: './user-box.component.html',
+	selector: 'app-user-box',
+	templateUrl: './user-box.component.html',
 })
 export class UserBoxComponent implements OnInit {
+	constructor(public globals: ThemeOptions, private router: Router) {}
 
-  constructor(public globals: ThemeOptions) {
-  }
-
-  ngOnInit() {
-  }
-
+	ngOnInit() {}
+	logout() {
+		this.router.navigate(['/'])
+	}
 }
