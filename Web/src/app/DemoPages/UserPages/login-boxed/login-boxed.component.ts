@@ -1,35 +1,35 @@
 import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
-import { Alert, Fire } from 'src/app/Alerts/Alert'
-import { AngularFirestore } from '@angular/fire/firestore'
 import { AngularFireAuth } from '@angular/fire/auth'
-
+import { Router } from '@angular/router'
+import firebase from 'firebase/app'
 @Component({
 	selector: 'app-login-boxed',
 	templateUrl: './login-boxed.component.html',
 	styles: [],
 })
 export class LoginBoxedComponent implements OnInit {
-	constructor(private router: Router, private auth: AngularFireAuth) {}
+	constructor(private auth: AngularFireAuth, private router: Router) {}
 
 	ngOnInit() {}
 
-	email: ''
-	password: ''
+	email
+	password
 
 	login() {
 		if (this.email === undefined || this.password === undefined) {
-			Alert('Validation Error', 'One or more fields should not be empty', 'error')
+			alert('One or more fields should not be empty')
 			return
 		}
-		this.auth
+		firebase
+			.auth()
 			.signInWithEmailAndPassword(this.email, this.password)
 			.then(() => {
-				Alert('Welcome Back!', 'CM Magbanua', 'success')
+				this.router.navigate(['/home/kois'])
 			})
 			.catch((error) => {
 				for (let key in error) {
-					Alert('Authentication Failed', error[key], 'error')
+					alert(error[key])
+					return
 				}
 			})
 	}

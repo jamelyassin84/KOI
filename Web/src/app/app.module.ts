@@ -8,12 +8,13 @@ import { rootReducer, ArchitectUIState } from './ThemeOptions/store'
 import { ConfigActions } from './ThemeOptions/store/config.actions'
 import { AppRoutingModule } from './app-routing.module'
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router'
-
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component'
-
 import { AngularFireModule } from '@angular/fire'
+import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { AngularFireStorageModule } from '@angular/fire/storage'
 
 // BOOTSTRAP COMPONENTS
 
@@ -22,7 +23,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar'
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar'
-import { ChartsModule } from 'ng2-charts'
 
 // LAYOUT
 
@@ -46,10 +46,6 @@ import { LogoComponent } from './Layout/Components/sidebar/elements/logo/logo.co
 import { FooterComponent } from './Layout/Components/footer/footer.component'
 
 // DEMO PAGES
-
-// Dashboards
-
-import { AnalyticsComponent } from './DemoPages/Dashboards/analytics/analytics.component'
 
 // Pages
 
@@ -90,26 +86,11 @@ import { ChartBoxes3Component } from './DemoPages/Widgets/chart-boxes3/chart-box
 import { ControlsComponent } from './DemoPages/Forms/Elements/controls/controls.component'
 import { LayoutComponent } from './DemoPages/Forms/Elements/layout/layout.component'
 
-// Charts
-
-import { ChartjsComponent } from './DemoPages/Charts/chartjs/chartjs.component'
-
-// Chart.js Examples
-
-import { LineChartComponent } from './DemoPages/Charts/chartjs/examples/line-chart/line-chart.component'
-import { BarChartComponent } from './DemoPages/Charts/chartjs/examples/bar-chart/bar-chart.component'
-import { ScatterChartComponent } from './DemoPages/Charts/chartjs/examples/scatter-chart/scatter-chart.component'
-import { RadarChartComponent } from './DemoPages/Charts/chartjs/examples/radar-chart/radar-chart.component'
-import { PolarAreaChartComponent } from './DemoPages/Charts/chartjs/examples/polar-area-chart/polar-area-chart.component'
-import { BubbleChartComponent } from './DemoPages/Charts/chartjs/examples/bubble-chart/bubble-chart.component'
-import { DynamicChartComponent } from './DemoPages/Charts/chartjs/examples/dynamic-chart/dynamic-chart.component'
-import { DoughnutChartComponent } from './DemoPages/Charts/chartjs/examples/doughnut-chart/doughnut-chart.component'
-import { PieChartComponent } from './DemoPages/Charts/chartjs/examples/pie-chart/pie-chart.component'
-
 import { HomeComponent } from './views/home/home.component'
 import { FoodComponent } from './views/food/food.component'
 import { DiseaseComponent } from './views/disease/disease.component'
 import { ContainersComponent } from './views/containers/containers.component'
+import { environment } from 'src/environments/environment'
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 	suppressScrollX: true,
@@ -117,51 +98,25 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 @NgModule({
 	declarations: [
-		// LAYOUT
-
 		AppComponent,
 		BaseLayoutComponent,
 		PagesLayoutComponent,
 		PageTitleComponent,
-
-		// HEADER
-
 		HeaderComponent,
 		SearchBoxComponent,
 		UserBoxComponent,
-
-		// SIDEBAR
-
 		SidebarComponent,
 		LogoComponent,
-
-		// FOOTER
-
 		FooterComponent,
-
-		// DEMO PAGES
-
-		// Dashboards
-
-		AnalyticsComponent,
-
-		// User Pages
-
 		ForgotPasswordBoxedComponent,
 		LoginBoxedComponent,
 		RegisterBoxedComponent,
-
-		// Elements
-
 		StandardComponent,
 		IconsComponent,
 		DropdownsComponent,
 		CardsComponent,
 		ListGroupsComponent,
 		TimelineComponent,
-
-		// Components
-
 		AccordionsComponent,
 		TabsComponent,
 		CarouselComponent,
@@ -169,36 +124,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		ProgressBarComponent,
 		PaginationComponent,
 		TooltipsPopoversComponent,
-
-		// Tables
-
 		RegularComponent,
 		TablesMainComponent,
-
-		// Dashboard Boxes
-
 		ChartBoxes3Component,
-
-		// Form Elements
-
 		ControlsComponent,
 		LayoutComponent,
 
-		// CHARTS
-
-		ChartjsComponent,
-
-		// Chart.js Examples
-
-		LineChartComponent,
-		BarChartComponent,
-		DoughnutChartComponent,
-		RadarChartComponent,
-		PieChartComponent,
-		PolarAreaChartComponent,
-		DynamicChartComponent,
-		BubbleChartComponent,
-		ScatterChartComponent,
 		HomeComponent,
 		FoodComponent,
 		DiseaseComponent,
@@ -211,21 +142,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		NgReduxModule,
 		CommonModule,
 		LoadingBarRouterModule,
-
-		// Angular Bootstrap Components
-
 		PerfectScrollbarModule,
 		NgbModule,
 		AngularFontAwesomeModule,
 		FormsModule,
 		ReactiveFormsModule,
 		HttpClientModule,
-
-		// Charts
-
-		ChartsModule,
-
-		AngularFireModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule,
+		AngularFireAuthModule,
+		AngularFireStorageModule,
 	],
 	providers: [
 		{

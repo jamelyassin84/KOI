@@ -20,7 +20,7 @@
                         </div>
                         <div id="exampleInputGroup2" role="group" class="form-group">
                             <div>
-                                <input [(ngModel)]="password" id="exampleInput2" type="password" placeholder="Password" required="required" aria-required="true" class="form-control" />
+                                <input (keyup.enter)="login()" [(ngModel)]="password" id="exampleInput2" type="password" placeholder="Password" required="required" aria-required="true" class="form-control" />
                             </div>
                         </div>
                     </div>
