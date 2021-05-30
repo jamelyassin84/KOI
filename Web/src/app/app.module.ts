@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component'
 
+import { AngularFireModule } from '@angular/fire'
+
 // BOOTSTRAP COMPONENTS
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome'
@@ -222,6 +224,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 		// Charts
 
 		ChartsModule,
+
+		AngularFireModule,
 	],
 	providers: [
 		{

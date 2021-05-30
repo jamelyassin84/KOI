@@ -1,4 +1,4 @@
-<div class="h-100 bg-royal bg-animation">
+<div class="h-100 bg-plum-plate bg-animation">
     <div class="d-flex h-100 justify-content-center align-items-center">
         <div class="mx-auto app-login-box col-md-8">
             <div class="mx-auto mb-3"></div>
@@ -8,25 +8,27 @@
                         <div class="h5 modal-title text-center">
                             <h4 class="mt-2">
                                 <h2>Welcome to</h2>
-                                <img class="m-5" style="height: 200px" src="../../../../assets/images/Picture1.png" alt="" />
+                                <img class="m-5" style="height: 200px" src="../../../../assets/images/icon1.png" alt="" />
                                 <br />
-                                <span class="mt-5">Please sign in to your account below.</span>
+                                <span class="mt-5">Please sign in to your administratior account below.</span>
                             </h4>
                         </div>
                         <div id="exampleInputGroup1" role="group" aria-describedby="exampleInputGroup1__BV_description_" class="form-group">
                             <div>
-                                <input id="exampleInput1" type="email" placeholder="Email" required="required" aria-required="true" class="form-control" aria-describedby="exampleInputGroup1__BV_description_" />
+                                <input [(ngModel)]="email" id="exampleInput1" type="email" placeholder="Email" required="required" aria-required="true" class="form-control" aria-describedby="exampleInputGroup1__BV_description_" />
                             </div>
                         </div>
                         <div id="exampleInputGroup2" role="group" class="form-group">
                             <div>
-                                <input id="exampleInput2" type="password" placeholder="Password" required="required" aria-required="true" class="form-control" />
+                                <input [(ngModel)]="password" id="exampleInput2" type="password" placeholder="Password" required="required" aria-required="true" class="form-control" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer clearfix">
                         <div class="float-right">
-                            <button (click)="login()" type="button" class="btn btn-primary btn-lg">Log-in</button>
+                            <button [disabled]="email === undefined || password === undefined" (click)="login()" type="button" class="btn btn-info btn-lg">
+								Log-in
+							</button>
                         </div>
                     </div>
                 </div>
