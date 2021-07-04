@@ -1,0 +1,47 @@
+<ng-template #addKoi>
+    <AddKoi></AddKoi>
+</ng-template>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex w-100">
+                    <div>
+                        <h1 class="text-info"><i class="mdi mdi-home"></i> Kois</h1>
+                        <span class="text-muted mb-3">View Everything Regarding Kois</span>
+                    </div>
+                    <div class="ml-auto">
+                        <Modal size="md" title="Add a Koi" btnTitle="Add Koi" btnClass="btn btn-info btn-rounded" [template]="addKoi"></Modal>
+                    </div>
+                </div>
+                <table class="table table-striped mt-5">
+                    <thead class="table-info">
+                        <tr>
+                            <th class="text-center">Image</th>
+                            <th>Type</th>
+                            <th>Color</th>
+                            <th>Pattern</th>
+                            <th class="text-center">View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let koi of kois">
+                            <td class="text-center">
+                                <img src="../../../../assets/koi/1.jpg" alt="image" />
+                            </td>
+                            <td>Japanese Koi</td>
+                            <td>Black</td>
+                            <td>Black, Orange, Blue</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-success mr-1 btn-rounded">Food</button>
+                                <button class="btn btn-sm btn-danger mr-1 btn-rounded">Disease</button>
+                                <button class="btn btn-sm btn-info mr-1 btn-rounded">Tank</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

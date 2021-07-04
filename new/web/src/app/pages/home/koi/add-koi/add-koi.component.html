@@ -1,0 +1,32 @@
+<div class="card-body">
+    <form class="forms-sample">
+        <button (click)="trigger()" class="btn btn-gradient-info btn-sm btn-round">Add Image(s)</button>
+        <div class="row mb-5">
+            <div *ngFor="let src of srcs" class="col-md-3 m-0 p-1">
+                <img class="block-images m-2 w-100 h-100" [src]="src" />
+            </div>
+        </div>
+        <input multiple type="file" (change)="readURL($event)" accept="image/*" id="file-input" style="display: none" />
+        <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Type</label>
+            <div class="col-sm-9">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.type" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Color</label>
+            <div class="col-sm-9">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.color" type="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Patter</label>
+            <div class="col-sm-9">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.pattern" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex aic jcc">
+            <button (click)="add()" class="btn btn-gradient-info mr-2">Add</button>
+        </div>
+    </form>
+</div>
