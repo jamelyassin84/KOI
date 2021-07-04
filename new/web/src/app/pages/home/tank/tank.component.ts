@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore'
 import { Component, OnInit } from '@angular/core'
 
 @Component({
@@ -6,7 +7,23 @@ import { Component, OnInit } from '@angular/core'
 	styleUrls: ['./tank.component.scss'],
 })
 export class TankComponent implements OnInit {
-	constructor() {}
+	constructor(private firestore: AngularFirestore) {}
 
-	ngOnInit(): void {}
+	tanks: any = []
+
+	ngOnInit(): void {
+		this.getKois()
+	}
+
+	async getKois() {
+		this.tanks = []
+		this.firestore
+			.collection('tank')
+			.get()
+			.subscribe((kois) => {
+				kois.forEach((koi: any) => {
+					this.tanks.push(koi.data())
+				})
+			})
+	}
 }

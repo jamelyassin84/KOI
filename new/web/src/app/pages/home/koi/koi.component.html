@@ -28,11 +28,14 @@
                     <tbody>
                         <tr *ngFor="let koi of kois">
                             <td class="text-center">
-                                <img src="../../../../assets/koi/1.jpg" alt="image" />
+                                <img *ngFor="let src of koi.images" [src]="src" alt="image" />
                             </td>
-                            <td>Japanese Koi</td>
-                            <td>Black</td>
-                            <td>Black, Orange, Blue</td>
+                            <td>{{ koi.type }}</td>
+
+                            <td>{{ koi.colo }}</td>
+
+                            <td>{{ koi.pattern }}</td>
+
                             <td class="text-center">
                                 <button class="btn btn-sm btn-success mr-1 btn-rounded">Food</button>
                                 <button class="btn btn-sm btn-danger mr-1 btn-rounded">Disease</button>

@@ -17,7 +17,6 @@
                 <table class="table table-striped mt-5">
                     <thead class="table-primary">
                         <tr>
-                            <th class="text-center">Image</th>
                             <th>Koi</th>
                             <th>with other species</th>
                             <th>with the same specie</th>
@@ -25,14 +24,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 0]">
-                            <td class="text-center">
-                                <img src="../../../../assets/koi/1.jpg" alt="image" />
-                            </td>
-                            <td>Japanese Koi</td>
-
-                            <td>Upto 25 Japanese Koi</td>
-                            <td>2 Japanese Koi, 4 Indian Koi, etc</td>
+                        <tr *ngFor="let tank of tanks">
+                            <td>{{ tank.koi }}</td>
+                            <td>{{ tank.with }}</td>
+                            <td>{{ tank.same }}</td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
                                 <button class="btn btn-sm btn-danger btn-rounded mr-1">Delete</button>
