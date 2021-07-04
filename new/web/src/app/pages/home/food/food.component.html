@@ -33,7 +33,9 @@
                             <td>{{ food.effects }}</td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger btn-rounded mr-1">Delete</button>
+                                <button (click)="deleteData()" class="btn btn-sm btn-danger btn-rounded mr-1">
+									Delete
+								</button>
                             </td>
                         </tr>
                     </tbody>

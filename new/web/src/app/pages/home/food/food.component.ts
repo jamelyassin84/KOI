@@ -26,4 +26,6 @@ export class FoodComponent implements OnInit {
 				})
 			})
 	}
+
+	deleteData() {}
 }
