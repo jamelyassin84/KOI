@@ -1,1 +1,34 @@
-<p>add-food works!</p>
+<div class="card-body">
+    <form class="forms-sample">
+        <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Koi</label>
+            <div class="col-sm-9">
+                <select (change)="changeKoi($event)" [(ngModel)]="food.koi" type="text" class="form-control">
+					<option selected disabled>Select Koi</option>
+					<option *ngFor="let koi of kois" [value]="koi.type">{{ koi.type }}</option>
+				</select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Food</label>
+            <div class="col-sm-9">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="food.food" type="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+                <textarea [ngModelOptions]="{ standalone: true }" [(ngModel)]="food.description" type="text" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Effects</label>
+            <div class="col-sm-9">
+                <textarea [ngModelOptions]="{ standalone: true }" [(ngModel)]="food.effects" type="text" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="d-flex aic jcc">
+            <button (click)="add()" class="btn btn-gradient-info mr-2">Add</button>
+        </div>
+    </form>
+</div>

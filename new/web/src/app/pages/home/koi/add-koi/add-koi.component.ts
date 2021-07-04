@@ -45,7 +45,7 @@ export class AddKoiComponent implements OnInit {
 				return
 			}
 		}
-		Fire(`Are you sure you want to ${this.koi.type}`, 'this will add koi', 'info', async () => {
+		Fire(`Are you sure you want to add ${this.koi.type}?`, 'this will add koi', 'info', async () => {
 			for (let index = 0; index <= this.koi.images.length - 1; index++) {
 				let file = await this.storage.ref('koi/' + this.koi.images[index].name).put(this.koi.images[index])
 				let photo_url = await file.ref.getDownloadURL()
@@ -56,7 +56,7 @@ export class AddKoiComponent implements OnInit {
 				.collection('kois')
 				.add(this.koi)
 				.then(() => {
-					Alert('Success Saved', `${this.koi.type} has been added`, 'success')
+					Alert('Successfully Saved', `${this.koi.type} has been added`, 'success')
 				})
 				.catch(() => {
 					Alert('Error', 'Something went wrong. Try Again', 'error')
