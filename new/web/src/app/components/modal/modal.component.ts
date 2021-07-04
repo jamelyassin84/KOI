@@ -1,6 +1,8 @@
 import { Component, ContentChild, Input, TemplateRef } from '@angular/core'
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
+import { Subject } from 'rxjs'
+import { DataService } from 'src/app/data.service'
 
 @Component({
 	selector: 'Modal',
@@ -16,10 +18,12 @@ export class ModalComponent implements ModalComponent {
 	@Input() btnTitle: String = ''
 	@Input() btnClass: String = ''
 	@Input() template: any
+	@Input() data: any = null
 
-	constructor(private modalService: NgbModal) {}
+	constructor(private modalService: NgbModal, private service: DataService) {}
 
 	open(content: any) {
+		this.service.setData(this.data)
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: this.size }).result.then(
 			(result) => {
 				this.closeResult = `Closed with: ${result}`

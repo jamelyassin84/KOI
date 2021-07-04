@@ -2,6 +2,18 @@
     <AddKoi></AddKoi>
 </ng-template>
 
+<ng-template #koiFoodModal>
+    <KoiFood></KoiFood>
+</ng-template>
+
+<ng-template #koiDiseaseModal>
+    <KoiTank></KoiTank>
+</ng-template>
+
+<ng-template #koiTankModal>
+    <TankOfKoi></TankOfKoi>
+</ng-template>
+
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -37,9 +49,11 @@
                             <td>{{ koi.pattern }}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-sm btn-success mr-1 btn-rounded">Food</button>
-                                <button class="btn btn-sm btn-danger mr-1 btn-rounded">Disease</button>
-                                <button class="btn btn-sm btn-info mr-1 btn-rounded">Tank</button>
+                                <Modal size="md" btnTitle="Food" [title]="'Food for ' + koi.type" btnClass="btn btn-sm btn-success mr-1 btn-rounded" [template]="koiFoodModal" [data]="koi.type"></Modal>
+
+                                <Modal size="md" btnTitle="Diseases" [title]="'Diseases of ' + koi.type" btnClass="btn btn-sm btn-danger mr-1 btn-rounded" [template]="koiDiseaseModal" [data]="koi.type"></Modal>
+
+                                <Modal size="md" btnTitle="Tanks" [title]="'Tanks for ' + koi.type" btnClass="btn btn-sm btn-info mr-1 btn-rounded" [template]="koiTankModal" [data]="koi.type"></Modal>
                             </td>
                         </tr>
                     </tbody>

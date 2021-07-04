@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
@@ -18,13 +19,15 @@ import { NavComponent } from './shared/nav/nav.component'
 import { SideComponent } from './shared/side/side.component'
 import { FootComponent } from './shared/foot/foot.component'
 
-import { environment } from 'src/environments/environment';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from './components/modal/modal.component';
-import { AddKoiComponent } from './pages/home/koi/add-koi/add-koi.component';
-import { AddFoodComponent } from './pages/home/food/add-food/add-food.component';
-import { AddDiseaseComponent } from './pages/home/disease/add-disease/add-disease.component';
+import { environment } from 'src/environments/environment'
+import { ModalComponent } from './components/modal/modal.component'
+import { AddKoiComponent } from './pages/home/koi/add-koi/add-koi.component'
+import { AddFoodComponent } from './pages/home/food/add-food/add-food.component'
+import { AddDiseaseComponent } from './pages/home/disease/add-disease/add-disease.component'
 import { AddTankComponent } from './pages/home/tank/add-tank/add-tank.component'
+import { KoiFoodComponent } from './pages/home/koi/koi-food/koi-food.component'
+import { KoiTankComponent } from './pages/home/koi/koi-tank/koi-tank.component'
+import { KoiDiseaseComponent } from './pages/home/koi/koi-disease/koi-disease.component'
 
 @NgModule({
 	declarations: [
@@ -38,11 +41,14 @@ import { AddTankComponent } from './pages/home/tank/add-tank/add-tank.component'
 		NavComponent,
 		SideComponent,
 		FootComponent,
-  ModalComponent,
-  AddKoiComponent,
-  AddFoodComponent,
-  AddDiseaseComponent,
-  AddTankComponent,
+		ModalComponent,
+		AddKoiComponent,
+		AddFoodComponent,
+		AddDiseaseComponent,
+		AddTankComponent,
+		KoiFoodComponent,
+		KoiTankComponent,
+		KoiDiseaseComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -53,9 +59,9 @@ import { AddTankComponent } from './pages/home/tank/add-tank/add-tank.component'
 		AngularFireStorageModule,
 		FormsModule,
 		ReactiveFormsModule,
-  NgbModule,
+		NgbModule,
 	],
-	providers: [],
+	providers: [NgbActiveModal],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
