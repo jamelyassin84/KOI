@@ -1,3 +1,7 @@
+<ng-template #addDisease>
+    <Disease></Disease>
+</ng-template>
+
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -8,7 +12,7 @@
                         <span class="text-muted mb-3">List down disease with its cure for a specific Koi</span>
                     </div>
                     <div class="ml-auto">
-                        <button class="btn btn-danger btn-rounded">Add Koi</button>
+                        <Modal size="md" title="Add a Disease" btnTitle="Add Disease" btnClass="btn btn-danger btn-rounded" [template]="addDisease"></Modal>
                     </div>
                 </div>
                 <table class="table table-striped mt-5">

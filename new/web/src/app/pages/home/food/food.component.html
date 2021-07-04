@@ -1,3 +1,7 @@
+<ng-template #addFood>
+    <Food></Food>
+</ng-template>
+
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -8,7 +12,7 @@
                         <span class="text-muted mb-3">List down food for a specific Koi</span>
                     </div>
                     <div class="ml-auto">
-                        <button class="btn btn-success btn-rounded">Add Koi</button>
+                        <Modal size="md" title="Add a Food" btnTitle="Add Food" btnClass="btn btn-success btn-rounded" [template]="addFood"></Modal>
                     </div>
                 </div>
                 <table class="table table-striped mt-5">

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-tank',
-  templateUrl: './tank.component.html',
-  styleUrls: ['./tank.component.scss']
+	selector: 'app-tank',
+	templateUrl: './tank.component.html',
+	styleUrls: ['./tank.component.scss'],
 })
 export class TankComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

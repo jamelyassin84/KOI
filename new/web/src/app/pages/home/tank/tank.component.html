@@ -1,3 +1,6 @@
+<ng-template #addTank>
+    <Tank></Tank>
+</ng-template>
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -8,7 +11,7 @@
                         <span class="text-muted mb-3">Set up an aquarium design for a specific Koi</span>
                     </div>
                     <div class="ml-auto">
-                        <button class="btn btn-primary btn-rounded">Add Koi</button>
+                        <Modal size="md" title="Add a Tank" btnTitle="Add Tank" btnClass="btn btn-primary btn-rounded" [template]="addTank"></Modal>
                     </div>
                 </div>
                 <table class="table table-striped mt-5">
