@@ -46,4 +46,23 @@ export class FoodComponent implements OnInit {
 				})
 		})
 	}
+
+	editable: any = {}
+	edit(id: any) {
+		this.editable[id] == true ? (this.editable[id] = false) : (this.editable[id] = true)
+	}
+
+	update(data: any, id: any) {
+		this.firestore
+			.collection('food')
+			.doc(id)
+			.update(data)
+			.then(() => {
+				Alert('Data has been updated', 'Koi data has been successfully updated', 'success')
+				this.getKois()
+			})
+			.catch(() => {
+				Alert('Error', 'Something went wrong. Try again', 'error')
+			})
+	}
 }

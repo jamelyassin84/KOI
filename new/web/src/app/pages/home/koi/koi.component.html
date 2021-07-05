@@ -39,25 +39,42 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let koi of kois; let i = index">
-                            <td class="text-center">
+                            <td *ngIf="!editable[i]" class="text-center">
                                 <img *ngFor="let src of koi.images" [src]="src" alt="image" />
                             </td>
-                            <td>{{ koi.type }}</td>
-
-                            <td>{{ koi.colo }}</td>
-
-                            <td>{{ koi.pattern }}</td>
-
-                            <td class="text-center">
+                            <td *ngIf="!editable[i]">{{ koi.type }}</td>
+                            <td *ngIf="!editable[i]">{{ koi.color }}</td>
+                            <td *ngIf="!editable[i]">{{ koi.pattern }}</td>
+                            <td *ngIf="!editable[i]" class="text-center">
                                 <Modal size="md" btnTitle="Food" [title]="'Food for ' + koi.type" btnClass="btn btn-sm btn-success mr-1 btn-rounded" [template]="koiFoodModal" [data]="koi.type"></Modal>
 
                                 <Modal size="md" btnTitle="Diseases" [title]="'Diseases of ' + koi.type" btnClass="btn btn-sm btn-danger mr-1 btn-rounded" [template]="koiDiseaseModal" [data]="koi.type"></Modal>
 
                                 <Modal size="md" btnTitle="Tanks" [title]="'Tanks for ' + koi.type" btnClass="btn btn-sm btn-info mr-1 btn-rounded" [template]="koiTankModal" [data]="koi.type"></Modal>
 
-                                <button class="btn btn-sm btn-warning mr-1 btn-rounded">Edit</button>
+                                <button (click)="edit(i)" class="btn btn-sm btn-warning mr-1 btn-rounded">Edit</button>
                                 <button (click)="deleteData(koiIDs[i], koi.type)" class="btn btn-sm btn-danger mr-1 btn-rounded">
 									Remove
+								</button>
+                            </td>
+
+                            <td *ngIf="editable[i]"></td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="koi.type" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="koi.color" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="koi.type" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <button (click)="update(koi, koiIDs[i]); edit(i)" class="btn btn-info btn-sm btn-rounded mr-1">
+									Save
+								</button>
+
+                                <button (click)="edit(i)" class="btn btn-outline-info btn-sm btn-rounded">
+									Cancel
 								</button>
                             </td>
                         </tr>

@@ -26,14 +26,32 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let disease of diseases; let i = index">
-                            <td>{{ disease.koi }}</td>
-                            <td>{{ disease.disease }}</td>
-                            <td>{{ disease.cure }}</td>
+                            <td *ngIf="!editable[i]">{{ disease.koi }}</td>
+                            <td *ngIf="!editable[i]">{{ disease.disease }}</td>
+                            <td *ngIf="!editable[i]">{{ disease.cure }}</td>
 
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
+                            <td *ngIf="!editable[i]" class="text-center">
+                                <button (click)="edit(i)" class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
                                 <button (click)="deleteData(IDs[i], disease.disease)" class="btn btn-sm btn-danger mr-1 btn-rounded">
 									Remove
+								</button>
+                            </td>
+
+                            <td *ngIf="editable[i]">{{ disease.koi }}</td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="disease.disease" />
+                            </td>
+
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="disease.cure" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <button (click)="update(disease, IDs[i]); edit(i)" class="btn btn-danger btn-sm btn-rounded mr-1">
+									Save
+								</button>
+
+                                <button (click)="edit(i)" class="btn btn-outline-danger btn-sm btn-rounded">
+									Cancel
 								</button>
                             </td>
                         </tr>

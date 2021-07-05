@@ -25,13 +25,31 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let tank of tanks; let i = index">
-                            <td>{{ tank.koi }}</td>
-                            <td>{{ tank.with }}</td>
-                            <td>{{ tank.same }}</td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
+                            <td *ngIf="!editable[i]">{{ tank.koi }}</td>
+                            <td *ngIf="!editable[i]">{{ tank.with }}</td>
+                            <td *ngIf="!editable[i]">{{ tank.same }}</td>
+                            <td *ngIf="!editable[i]" class="text-center">
+                                <button (click)="edit(i)" class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
                                 <button (click)="deleteData(IDs[i], tank.koi)" class="btn btn-sm btn-danger mr-1 btn-rounded">
 									Remove
+								</button>
+                            </td>
+
+                            <td *ngIf="editable[i]">{{ tank.koi }}</td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="tank.with" />
+                            </td>
+
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="tank.same" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <button (click)="update(tank, IDs[i]); edit(i)" class="btn btn-primary btn-sm btn-rounded mr-1">
+									Save
+								</button>
+
+                                <button (click)="edit(i)" class="btn btn-outline-primary btn-sm btn-rounded">
+									Cancel
 								</button>
                             </td>
                         </tr>

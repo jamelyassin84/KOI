@@ -1,6 +1,7 @@
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Component, OnInit } from '@angular/core'
 import { DataService } from 'src/app/data.service'
+import { Alert } from 'src/app/pages/components/alert/Alert'
 
 @Component({
 	selector: 'KoiFood',

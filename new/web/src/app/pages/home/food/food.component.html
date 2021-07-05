@@ -27,14 +27,35 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let food of foods; let i = index">
-                            <td>{{ food.koi }}</td>
-                            <td>{{ food.food }}</td>
-                            <td>{{ food.description }}</td>
-                            <td>{{ food.effects }}</td>
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
+                            <td *ngIf="!editable[i]">{{ food.koi }}</td>
+                            <td *ngIf="!editable[i]">{{ food.food }}</td>
+                            <td *ngIf="!editable[i]">{{ food.description }}</td>
+                            <td *ngIf="!editable[i]">{{ food.effects }}</td>
+                            <td *ngIf="!editable[i]" class="text-center">
+                                <button (click)="edit(i)" class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
                                 <button (click)="deleteData(IDs[i], food.food)" class="btn btn-sm btn-danger mr-1 btn-rounded">
 									Remove
+								</button>
+                            </td>
+
+                            <td *ngIf="editable[i]">{{ food.koi }}</td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="food.food" />
+                            </td>
+
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="food.description" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="food.effects" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <button (click)="update(food, IDs[i]); edit(i)" class="btn btn-success btn-sm btn-rounded mr-1">
+									Save
+								</button>
+
+                                <button (click)="edit(i)" class="btn btn-outline-success btn-sm btn-rounded">
+									Cancel
 								</button>
                             </td>
                         </tr>
