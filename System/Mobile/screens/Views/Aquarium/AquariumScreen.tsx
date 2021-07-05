@@ -9,6 +9,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import HomeHeader from '../Home/HomeHeader';
 import Tank from './Tank'
 import { collection } from '../../../firebase/Collection';
+import { Text } from 'react-native';
 
 export default function AquariumScreen() {
     const colorScheme = useColorScheme();
@@ -51,30 +52,8 @@ export default function AquariumScreen() {
 
     return (
         <View style={{ backgroundColor: Colors[ colorScheme ].background, flex: 1 }}>
-            <SearchScreen
-                show={showSearch}
-                showSearch={() => {
-                    setshowSearch( false )
-                }}
-                data={( data: any ) => {
-                    if ( data.type == "plant" ) {
-                        // setplants( data.value )
-                        return
-                    }
-                    // setproducts( data.value )
-                }}
-            />
 
-            <HomeHeader
-                searchIsShowing={showSearch}
-                showSearch={() => {
-                    setshowSearch( true )
-                }}
-                show={show}
-                data={( data: any ) => {
-                    // setproducts( data )
-                }}
-            />
+            <Text style={{ fontSize: 30, textAlign: 'center', margin: 30 }}>Tank Specification</Text>
 
             <FlatList
                 refreshControl={

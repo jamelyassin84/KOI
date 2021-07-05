@@ -82,7 +82,7 @@ function HomeNavigator() {
             <HomeStack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
-                options={{ headerTitle: 'Everything but Kois' }}
+                options={{ headerShown: false }}
             />
         </HomeStack.Navigator>
     );
@@ -95,7 +95,7 @@ function FoodNavigator() {
             <FoodStack.Screen
                 name="FoodScreen"
                 component={FoodScreen}
-                options={{ headerTitle: 'Food for your Koi' }}
+                options={{ headerShown: false }}
             />
         </FoodStack.Navigator>
     );
@@ -109,7 +109,7 @@ function DiseaseNavigator() {
             <DiseaseStack.Screen
                 name="DiseaseScreen"
                 component={DiseaseScreen}
-                options={{ headerTitle: 'Kois Diseases' }}
+                options={{ headerShown: false }}
             />
         </DiseaseStack.Navigator>
     );
@@ -122,7 +122,7 @@ function AquariumNavigator() {
             <AquariumStack.Screen
                 name="AquariumScreen"
                 component={AquariumScreen}
-                options={{ headerTitle: 'Tank Specification' }}
+                options={{ headerShown: false }}
             />
         </AquariumStack.Navigator>
     );
@@ -135,7 +135,7 @@ function WaterQualityNavigator() {
             <WaterQualityStack.Screen
                 name="WaterQualityScreen"
                 component={WaterQualityScreen}
-                options={{ headerTitle: 'Water Quality' }}
+                options={{ headerShown: false }}
             />
         </WaterQualityStack.Navigator>
     );

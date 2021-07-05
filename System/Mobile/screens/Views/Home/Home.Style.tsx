@@ -58,6 +58,7 @@ export default StyleSheet.create( {
         marginLeft: 5,
         marginTop: 12,
         fontSize: 20,
+        fontWeight: 'bold',
         textTransform: 'capitalize',
     },
     quantity: {
