@@ -14,13 +14,19 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+                <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.description" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Color</label>
             <div class="col-sm-9">
                 <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.color" type="email" class="form-control" />
             </div>
         </div>
         <div class="form-group row">
-            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Patter</label>
+            <label for="exampleInputMobile" class="col-sm-3 col-form-label">Pattern</label>
             <div class="col-sm-9">
                 <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="koi.pattern" type="text" class="form-control" />
             </div>

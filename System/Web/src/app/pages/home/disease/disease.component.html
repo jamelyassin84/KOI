@@ -20,6 +20,7 @@
                         <tr>
                             <th>Koi</th>
                             <th>Disease</th>
+                            <th>Description</th>
                             <th>Cure</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -28,6 +29,7 @@
                         <tr *ngFor="let disease of diseases; let i = index">
                             <td *ngIf="!editable[i]">{{ disease.koi }}</td>
                             <td *ngIf="!editable[i]">{{ disease.disease }}</td>
+                            <td *ngIf="!editable[i]">{{ disease.description }}</td>
                             <td *ngIf="!editable[i]">{{ disease.cure }}</td>
 
                             <td *ngIf="!editable[i]" class="text-center">
@@ -40,6 +42,9 @@
                             <td *ngIf="editable[i]">{{ disease.koi }}</td>
                             <td *ngIf="editable[i]">
                                 <input type="text" class="form-control" [(ngModel)]="disease.disease" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <input type="text" class="form-control" [(ngModel)]="disease.description" />
                             </td>
 
                             <td *ngIf="editable[i]">

@@ -27,11 +27,12 @@
                         <Modal size="md" title="Add a Koi" btnTitle="Add Koi" btnClass="btn btn-info btn-rounded" [template]="addKoi"></Modal>
                     </div>
                 </div>
-                <table class="table table-striped mt-5">
+                <table class="table table-striped mt-5 table-responsive">
                     <thead class="table-info">
                         <tr>
                             <th class="text-center">Image</th>
                             <th>Type</th>
+                            <th>Description</th>
                             <th>Color</th>
                             <th>Pattern</th>
                             <th class="text-center">View</th>
@@ -43,6 +44,7 @@
                                 <img *ngFor="let src of koi.images" [src]="src" alt="image" />
                             </td>
                             <td *ngIf="!editable[i]">{{ koi.type }}</td>
+                            <td *ngIf="!editable[i]">{{ koi.description }}</td>
                             <td *ngIf="!editable[i]">{{ koi.color }}</td>
                             <td *ngIf="!editable[i]">{{ koi.pattern }}</td>
                             <td *ngIf="!editable[i]" class="text-center">
@@ -61,6 +63,9 @@
                             <td *ngIf="editable[i]"></td>
                             <td *ngIf="editable[i]">
                                 <input type="text" class="form-control" [(ngModel)]="koi.type" />
+                            </td>
+                            <td *ngIf="editable[i]">
+                                <textarea type="text" class="form-control" [(ngModel)]="koi.description"></textarea>
                             </td>
                             <td *ngIf="editable[i]">
                                 <input type="text" class="form-control" [(ngModel)]="koi.color" />
