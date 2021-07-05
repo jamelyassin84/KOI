@@ -77,7 +77,9 @@ export default function HomeScreen() {
                 refreshControl={
                     <RefreshControl
                         refreshing={loading}
-                        onRefresh={() => { }}
+                        onRefresh={() => {
+                            getKois()
+                        }}
                     />
                 }
                 onScroll={( event ) => {

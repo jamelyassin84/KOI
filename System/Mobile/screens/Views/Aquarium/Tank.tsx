@@ -31,7 +31,7 @@ export default function Tank( props: any ) {
                 {data.item.same}
             </Text>
             <Text style={[ styles.quantity, { color: 'gray', } ]}>
-                for koi type: {data.item.koi}
+                for Koi: <Text style={{ color: Colors[ colorScheme ].tint }}>{data.item.cure}</Text>
             </Text>
         </TouchableOpacity>
     )

@@ -82,7 +82,7 @@ function HomeNavigator() {
             <HomeStack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
-                options={{ headerTitle: 'Kois' }}
+                options={{ headerTitle: 'Everything but Kois' }}
             />
         </HomeStack.Navigator>
     );
@@ -122,7 +122,7 @@ function AquariumNavigator() {
             <AquariumStack.Screen
                 name="AquariumScreen"
                 component={AquariumScreen}
-                options={{ headerTitle: 'Tank Design' }}
+                options={{ headerTitle: 'Tank Specification' }}
             />
         </AquariumStack.Navigator>
     );

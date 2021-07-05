@@ -23,12 +23,17 @@ export default function Disease( props: any ) {
                 styles.productContainer,
                 { backgroundColor: Colors[ colorScheme ].homeCard },
             ]}  >
-            <Image style={styles.productImage} source={require( '../../../assets/placeholders/virus.jpg' )} />
             <Text style={[ styles.plantName, { color: Colors[ colorScheme ].text } ]}>
                 {data.item.disease}
             </Text>
             <Text style={[ styles.quantity, { color: 'gray', } ]}>
-                Affected Koi: {data.item.koi}
+                Affected Koi: <Text style={{ color: Colors[ colorScheme ].tint }}>{data.item.koi}</Text>
+            </Text>
+            <Text style={[ styles.quantity, { color: 'gray', } ]}>
+                {data.item.description}
+            </Text>
+            <Text style={[ styles.quantity, { color: '#28DA37', } ]}>
+                Cure: <Text style={{ color: Colors[ colorScheme ].text }}>{data.item.cure}</Text>
             </Text>
         </TouchableOpacity>
     )

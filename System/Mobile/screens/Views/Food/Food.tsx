@@ -23,12 +23,17 @@ export default function Food( props: any ) {
                 styles.productContainer,
                 { backgroundColor: Colors[ colorScheme ].homeCard },
             ]}  >
-            <Image style={styles.productImage} source={require( '../../../assets/placeholders/food.jpg' )} />
             <Text style={[ styles.plantName, { color: Colors[ colorScheme ].text } ]}>
                 {data.item.food}
             </Text>
             <Text style={[ styles.quantity, { color: 'gray', } ]}>
-                for your {data.item.koi}
+                for your <Text style={{ color: Colors[ colorScheme ].tint }}>{data.item.koi}</Text>
+            </Text>
+            <Text style={[ styles.quantity, { color: 'gray', } ]}>
+                for your {data.item.description}
+            </Text>
+            <Text style={[ styles.quantity, { color: '#28DA37', } ]}>
+                Effects: <Text style={{ color: Colors[ colorScheme ].text }}>{data.item.effects}</Text>
             </Text>
         </TouchableOpacity>
     )

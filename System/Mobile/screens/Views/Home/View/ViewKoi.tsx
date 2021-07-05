@@ -61,7 +61,7 @@ export default function ViewKoi( { route }: any ) {
 
 
     return (
-        <View>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <ScrollView horizontal={true} style={{ marginTop: -60, backgroundColor: 'gray' }} showsHorizontalScrollIndicator={false}>
                 {
                     data.images.map( ( image: any, key: any ) => {
@@ -71,43 +71,52 @@ export default function ViewKoi( { route }: any ) {
                     } )
                 }
             </ScrollView>
-            <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>{data.type}</Text>
-            <Text style={{ marginTop: 7, color: Colors[ colorScheme ].text }}>Colors: <Text style={{ color: '#9DC16B' }}>{data.color}</Text> </Text>
-            <Text style={{ marginTop: 7, color: Colors[ colorScheme ].text }}>Patterns: <Text style={{ color: '#9DC16B' }}>{data.pattern}</Text> </Text>
+            <View style={{ paddingHorizontal: 15 }}>
+                <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>{data.type}</Text>
+                <Text style={{ marginTop: 7, color: 'gray', fontSize: 20 }}>{data.description} </Text>
+                <Text style={{ marginTop: 27, color: Colors[ colorScheme ].text }}>Colors: <Text style={{ color: 'gray' }}>{data.color}</Text> </Text>
+                <Text style={{ marginTop: 7, color: Colors[ colorScheme ].text, marginBottom: 50 }}>Patterns: <Text style={{ color: Colors[ colorScheme ].tint }}>{data.pattern}</Text> </Text>
 
 
-            <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Food</Text>
-            {
-                food.map( ( food: any, index: any ) => (
-                    <View key={index}>
-                        <Text>{food.food}</Text>
-                        <Text>{food.description}</Text>
-                        <Text>{food.effects}</Text>
-                    </View>
-                ) )
-            }
+                <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Food</Text>
+                {
+                    food.map( ( food: any, index: any ) => (
+                        <View key={index} style={{ marginTop: 30 }}>
+                            <Text style={{ marginTop: 17, color: 'orange', fontSize: 30, fontWeight: 'bold' }}>{index + 1}. {food.food}</Text>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Description</Text>
+                            <Text style={{ marginTop: 1, color: 'gray', fontSize: 20 }}>{food.description}</Text>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Effects</Text>
+                            <Text style={{ marginTop: 1, color: 'gray', fontSize: 20 }}>{food.effects}</Text>
+                        </View>
+                    ) )
+                }
 
-            <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Diseases</Text>
-            {
-                disease.map( ( disease: any, index: any ) => (
-                    <View key={index}>
-                        <Text>{disease.disease}</Text>
-                        <Text>{disease.cure}</Text>
-                    </View>
-                ) )
-            }
+                <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Diseases</Text>
+                {
+                    disease.map( ( disease: any, index: any ) => (
+                        <View key={index}>
+                            <Text style={{ marginTop: 17, color: 'red', fontSize: 30, fontWeight: 'bold' }}>{index + 1}. {disease.disease}</Text>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Description</Text>
+                            <Text style={{ marginTop: 1, color: 'gray', fontSize: 20 }}>{disease.description}</Text>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Cure</Text>
+                            <Text style={{ marginTop: 1, color: '#28DA37', fontSize: 20 }}>{disease.cure}</Text>
+                        </View>
+                    ) )
+                }
 
-            <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Tanks</Text>
-            {
-                tanks.map( ( tank: any, index: any ) => (
-                    <View key={index}>
-                        <Text>{tank.koi}</Text>
-                        <Text>{tank.with}</Text>
-                        <Text>{tank.same}</Text>
-                    </View>
-                ) )
-            }
-
-        </View>
+                <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Tanks</Text>
+                {
+                    tanks.map( ( tank: any, index: any ) => (
+                        <View key={index}>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Desired Temperature</Text>
+                            <Text style={{ marginTop: 1, color: 'gray', fontSize: 20 }}>{tank.with}</Text>
+                            <Text style={{ marginTop: 17, color: Colors[ colorScheme ].text, fontSize: 20 }}>Desired pH Level</Text>
+                            <Text style={{ marginTop: 1, color: '#28DA37', fontSize: 20 }}>{tank.same}</Text>
+                        </View>
+                    ) )
+                }
+            </View>
+            <View style={{ height: 150 }}></View>
+        </ScrollView>
     )
 }

@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create( {
     images: {
-        width: 390,
-        height: 350,
+        width: 420,
+        height: 490,
         resizeMode: 'stretch',
     },
 
@@ -25,9 +25,9 @@ export default StyleSheet.create( {
     },
 
     name: {
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
-        marginTop: 10
+        marginTop: 30
     },
 
     title: {
