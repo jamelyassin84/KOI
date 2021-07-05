@@ -2,6 +2,7 @@
 export type RootStackParamList = {
     Root: undefined;
     NotFound: undefined;
+    ViewKoi: undefined;
 
     Step1: undefined;
     Step2: undefined;

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native'
+import { color } from 'react-native-reanimated'
 
 export default StyleSheet.create( {
     searchContainer: {
@@ -31,8 +32,6 @@ export default StyleSheet.create( {
         paddingBottom: 20,
         marginLeft: 7,
         marginBottom: 7,
-        borderWidth: 1,
-        borderColor: 'rgba(150,150,150,.2)'
     },
     Name: {
         marginLeft: 5,
@@ -59,7 +58,7 @@ export default StyleSheet.create( {
         marginLeft: 5,
         marginTop: 12,
         fontSize: 20,
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
     },
     quantity: {
         marginLeft: 5,

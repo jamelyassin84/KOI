@@ -9,6 +9,7 @@ import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
+import ViewKoi from '../screens/Views/Home/View/ViewKoi';
 import Step1 from '../Steps/step1';
 import Step2 from '../Steps/step2';
 import Step3 from '../Steps/step3';
@@ -38,6 +39,7 @@ function RootNavigator() {
             <Stack.Screen name="Step3" component={Step3} />
             <Stack.Screen name="Step4" component={Step4} />
             <Stack.Screen name="Step5" component={Step5} />
+            <Stack.Screen name="ViewKoi" component={ViewKoi} />
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>

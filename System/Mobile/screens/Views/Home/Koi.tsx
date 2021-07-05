@@ -11,13 +11,14 @@ import Colors from '../../../constants/Colors';
 export default function Koi( props: any ) {
 
     const colorScheme = useColorScheme();
+    const navigation = useNavigation();
 
     const data = props.data
 
     return (
         <TouchableOpacity
             onPress={() => {
-                // navigation.navigate( 'ShowPlant', { data: data.item } )
+                navigation.navigate( 'ViewKoi', { data: data.item } )
             }}
             style={[
                 styles.productContainer,
@@ -25,7 +26,7 @@ export default function Koi( props: any ) {
             ]}  >
             <Image style={styles.productImage} source={{ uri: data.item.images[ 0 ] || '' }} />
 
-            <Text style={[ styles.plantName, { color: Colors[ colorScheme ].text } ]}>
+            <Text style={[ styles.plantName, { color: Colors[ colorScheme ].tint } ]}>
                 {data.item.type}
             </Text>
             <Text style={[ styles.quantity, { color: 'gray', } ]}>

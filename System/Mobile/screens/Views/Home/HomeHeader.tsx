@@ -12,7 +12,7 @@ export default function HomeHeader( props: any ) {
     let searchInput: any
     return (
         <View style={[ props.show != true ? {
-            backgroundColor: Colors[ colorScheme ].background, shadowColor: "#0D6EFD",
+            backgroundColor: Colors[ colorScheme ].background, shadowColor: "black",
             shadowOpacity: 0.22,
             shadowRadius: 2.22,
             zIndex: 1,
