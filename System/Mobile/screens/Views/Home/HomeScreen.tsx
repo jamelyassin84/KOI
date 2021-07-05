@@ -69,7 +69,7 @@ export default function HomeScreen() {
                 }}
                 show={show}
                 data={( data: any ) => {
-                    // setproducts( data )
+                    setkoi( data )
                 }}
             />
 

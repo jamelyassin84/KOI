@@ -89,7 +89,7 @@ export default function FoodScreen() {
                 keyExtractor={data.index}
                 data={data}
                 renderItem={data.length == 0 ? renderPlaceholder : renderItem}
-                numColumns={2}
+                numColumns={1}
             />
 
         </View>

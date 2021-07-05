@@ -23,7 +23,6 @@ export default function Tank( props: any ) {
                 styles.productContainer,
                 { backgroundColor: Colors[ colorScheme ].homeCard },
             ]}  >
-            <Image style={styles.productImage} source={require( '../../../assets/placeholders/tank.jpg' )} />
             <Text style={[ styles.plantName, { color: Colors[ colorScheme ].text } ]}>
                 {data.item.with}
             </Text>

@@ -21,7 +21,8 @@ export default function Food( props: any ) {
             }}
             style={[
                 styles.productContainer,
-                { backgroundColor: Colors[ colorScheme ].homeCard },
+
+                { backgroundColor: Colors[ colorScheme ].homeCard, width: '100%' },
             ]}  >
             <Text style={[ styles.plantName, { color: Colors[ colorScheme ].text } ]}>
                 {data.item.food}

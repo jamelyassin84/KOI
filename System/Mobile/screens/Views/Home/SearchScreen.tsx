@@ -6,6 +6,7 @@ import styles from './Home.Style'
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
+import { collection } from '../../../firebase/Collection';
 
 type Props = {
     show: Boolean,
@@ -35,8 +36,14 @@ export default function SearchScreen( props: any ) {
     }, [ props.show ] )
 
     useEffect( () => {
-        if ( keyword != "" ) {
-        }
+        let koiArray: any = []
+        collection( 'koi' ).where( 'type', '==', keyword ).get().then( ( kois ) => {
+            kois.forEach( ( koi ) => {
+                koiArray.push( koi.data() )
+            } )
+        } )
+        setsearchResults( koiArray )
+
 
     }, [ keyword ] )
 
@@ -47,6 +54,7 @@ export default function SearchScreen( props: any ) {
             width: '100%',
             height: '100%',
             backgroundColor: Colors[ colorScheme ].background,
+            paddingTop: 50
         },
         props.show == false ? { left: -500 } : {}
         ]

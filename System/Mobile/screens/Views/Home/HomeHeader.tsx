@@ -31,6 +31,8 @@ export default function HomeHeader( props: any ) {
                     width: 20,
                     marginTop: 30,
                     marginLeft: 20,
+                    marginBottom: 20,
+                    alignSelf: 'center',
                     transform: [
                         {
                             scale: 2
@@ -38,7 +40,7 @@ export default function HomeHeader( props: any ) {
                     ]
                 }} source={require( '../../../assets/images/icon1.png' )} />
             </View>
-            <View style={[ { padding: 10, position: 'relative', zIndex: 3 } ]}>
+            {/* <View style={[ { padding: 10, position: 'relative', zIndex: 3 } ]}>
                 <View style={[
                     styles.searchContainer,
                     { backgroundColor: Colors[ colorScheme ].background },
@@ -60,9 +62,9 @@ export default function HomeHeader( props: any ) {
                         }}
                         selectionColor={Colors[ colorScheme ].tabIconSelected}
                         style={[ styles.input, { color: Colors[ colorScheme ].text } ]}
-                        placeholder='Koi Search' />
+                        placeholder='Search' />
                 </View>
-            </View>
+            </View> */}
         </View>
     );
 }
