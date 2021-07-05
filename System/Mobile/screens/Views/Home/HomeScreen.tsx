@@ -6,14 +6,17 @@ import useColorScheme from '../../../hooks/useColorScheme';
 import HomeHeader from './HomeHeader';
 import { FlatList } from 'react-native-gesture-handler';
 import Item from '../../../components/Placeholders/Item';
+import { collection } from '../../../firebase/Collection';
+import Koi from './Koi';
 
 
 export default function HomeScreen() {
     const colorScheme = useColorScheme();
     const [ showSearch, setshowSearch ]: any = React.useState( false );
     const [ loading, setloading ]: any = React.useState( false );
-    const [ items, setitems ]: any = React.useState( [] );
     const [ show, setShow ] = React.useState( true )
+
+
     function scrollHandler( event: any ) {
         if ( event.nativeEvent.contentOffset.y > 1 ) {
             setShow( false )
@@ -22,12 +25,29 @@ export default function HomeScreen() {
         }
     }
 
-    const renderPlaceholder = () => (
+    React.useEffect( () => {
+        getKois()
+    }, [] )
+
+    const [ kois, setkoi ]: any = React.useState( [] )
+    const getKois = () => {
+        let koisArray: any = []
+        collection( 'kois' ).get()
+            .then( ( kois ) => {
+                kois.forEach( ( koi: any ) => {
+                    koisArray.push( koi.data() )
+                } )
+                setkoi( koisArray )
+            } )
+    }
+
+    const renderPlaceholder = ( data: any = [ 1, 1, 1, 1, 1, 1, 1, 1 ] ) => (
         <Item />
     )
 
-    const renderItem = () => (
-        <View />
+
+    const renderItem = ( data: any ) => (
+        <Koi data={data} />
     )
 
     return (
@@ -38,11 +58,7 @@ export default function HomeScreen() {
                     setshowSearch( false )
                 }}
                 data={( data: any ) => {
-                    if ( data.type == "plant" ) {
-                        // setplants( data.value )
-                        return
-                    }
-                    // setproducts( data.value )
+                    setkoi( data )
                 }}
             />
 
@@ -68,9 +84,9 @@ export default function HomeScreen() {
                     scrollHandler( event )
                 }}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={items.index}
-                data={items.length == 0 ? [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] : items}
-                renderItem={items.length == 0 ? renderPlaceholder : renderItem}
+                keyExtractor={kois.index}
+                data={kois}
+                renderItem={kois.length == 0 ? renderPlaceholder : renderItem}
                 numColumns={2}
             />
         </View>

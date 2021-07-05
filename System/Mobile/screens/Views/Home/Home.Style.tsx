@@ -30,7 +30,9 @@ export default StyleSheet.create( {
         borderRadius: 10,
         paddingBottom: 20,
         marginLeft: 7,
-        marginBottom: 7
+        marginBottom: 7,
+        borderWidth: 1,
+        borderColor: 'rgba(150,150,150,.2)'
     },
     Name: {
         marginLeft: 5,
@@ -52,5 +54,25 @@ export default StyleSheet.create( {
         alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: 'rgba(150,150,150,.2)'
-    }
+    },
+    plantName: {
+        marginLeft: 5,
+        marginTop: 12,
+        fontSize: 20,
+        textTransform: 'capitalize'
+    },
+    quantity: {
+        marginLeft: 5,
+        color: 'gray',
+        fontSize: 11,
+        marginTop: 10
+    },
+
+    price: {
+        fontSize: 20,
+        color: '#46D094',
+        fontWeight: '500',
+        marginLeft: 5,
+        marginTop: 7
+    },
 } )

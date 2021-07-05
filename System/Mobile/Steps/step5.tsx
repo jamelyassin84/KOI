@@ -48,7 +48,7 @@ export default function Step5() {
                         textAlign: 'center',
                         paddingHorizontal: 50
                     }}>
-                    <Text style={{ fontWeight: '500' }}>Check </Text> water quality and <Text style={{ fontWeight: '500' }}>have and Idea  </Text>on how many Koi should you place
+                    <Text style={{ fontWeight: '500' }}>Check </Text> water quality and <Text style={{ fontWeight: '500' }}>have an idea  </Text>on how many Koi should you place
                 </Text>
 
             </TouchableOpacity>

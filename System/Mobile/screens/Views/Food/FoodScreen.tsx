@@ -7,6 +7,8 @@ import useColorScheme from '../../../hooks/useColorScheme';
 import Item from '../../../components/Placeholders/Item';
 import { FlatList } from 'react-native-gesture-handler';
 import HomeHeader from '../Home/HomeHeader';
+import { collection } from '../../../firebase/Collection';
+import Food from './Food'
 
 export default function FoodScreen() {
     const colorScheme = useColorScheme();
@@ -22,12 +24,29 @@ export default function FoodScreen() {
         }
     }
 
-    const renderPlaceholder = () => (
+
+    React.useEffect( () => {
+        getKois()
+    }, [] )
+
+    const [ data, setData ]: any = React.useState( [] )
+    const getKois = () => {
+        let dataArray: any = []
+        collection( 'food' ).get()
+            .then( ( snapshots ) => {
+                snapshots.forEach( ( doc: any ) => {
+                    dataArray.push( doc.data() )
+                } )
+                setData( dataArray )
+            } )
+    }
+
+    const renderPlaceholder = ( data: any = [ 1, 1, 1, 1, 1, 1, 1, 1 ] ) => (
         <Item />
     )
 
-    const renderItem = () => (
-        <View />
+    const renderItem = ( data: any ) => (
+        <Food data={data} />
     )
 
 
@@ -39,11 +58,7 @@ export default function FoodScreen() {
                     setshowSearch( false )
                 }}
                 data={( data: any ) => {
-                    if ( data.type == "plant" ) {
-                        // setplants( data.value )
-                        return
-                    }
-                    // setproducts( data.value )
+                    setData( data )
                 }}
             />
 
@@ -69,9 +84,9 @@ export default function FoodScreen() {
                     scrollHandler( event )
                 }}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={items.index}
-                data={items.length == 0 ? [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] : items}
-                renderItem={items.length == 0 ? renderPlaceholder : renderItem}
+                keyExtractor={data.index}
+                data={data}
+                renderItem={data.length == 0 ? renderPlaceholder : renderItem}
                 numColumns={2}
             />
 
