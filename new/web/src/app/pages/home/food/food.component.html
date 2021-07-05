@@ -26,15 +26,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let food of foods">
+                        <tr *ngFor="let food of foods; let i = index">
                             <td>{{ food.koi }}</td>
                             <td>{{ food.food }}</td>
                             <td>{{ food.description }}</td>
                             <td>{{ food.effects }}</td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
-                                <button (click)="deleteData()" class="btn btn-sm btn-danger btn-rounded mr-1">
-									Delete
+                                <button (click)="deleteData(IDs[i], food.food)" class="btn btn-sm btn-danger mr-1 btn-rounded">
+									Remove
 								</button>
                             </td>
                         </tr>

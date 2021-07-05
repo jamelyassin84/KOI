@@ -24,13 +24,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let tank of tanks">
+                        <tr *ngFor="let tank of tanks; let i = index">
                             <td>{{ tank.koi }}</td>
                             <td>{{ tank.with }}</td>
                             <td>{{ tank.same }}</td>
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger btn-rounded mr-1">Delete</button>
+                                <button (click)="deleteData(IDs[i], tank.koi)" class="btn btn-sm btn-danger mr-1 btn-rounded">
+									Remove
+								</button>
                             </td>
                         </tr>
                     </tbody>

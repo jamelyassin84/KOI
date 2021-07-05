@@ -25,14 +25,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let disease of diseases">
+                        <tr *ngFor="let disease of diseases; let i = index">
                             <td>{{ disease.koi }}</td>
                             <td>{{ disease.disease }}</td>
                             <td>{{ disease.cure }}</td>
 
                             <td class="text-center">
                                 <button class="btn btn-sm btn-warning btn-rounded mr-1">Edit</button>
-                                <button class="btn btn-sm btn-danger btn-rounded mr-1">Delete</button>
+                                <button (click)="deleteData(IDs[i], disease.disease)" class="btn btn-sm btn-danger mr-1 btn-rounded">
+									Remove
+								</button>
                             </td>
                         </tr>
                     </tbody>

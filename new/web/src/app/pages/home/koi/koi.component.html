@@ -38,7 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let koi of kois">
+                        <tr *ngFor="let koi of kois; let i = index">
                             <td class="text-center">
                                 <img *ngFor="let src of koi.images" [src]="src" alt="image" />
                             </td>
@@ -54,6 +54,11 @@
                                 <Modal size="md" btnTitle="Diseases" [title]="'Diseases of ' + koi.type" btnClass="btn btn-sm btn-danger mr-1 btn-rounded" [template]="koiDiseaseModal" [data]="koi.type"></Modal>
 
                                 <Modal size="md" btnTitle="Tanks" [title]="'Tanks for ' + koi.type" btnClass="btn btn-sm btn-info mr-1 btn-rounded" [template]="koiTankModal" [data]="koi.type"></Modal>
+
+                                <button class="btn btn-sm btn-warning mr-1 btn-rounded">Edit</button>
+                                <button (click)="deleteData(koiIDs[i], koi.type)" class="btn btn-sm btn-danger mr-1 btn-rounded">
+									Remove
+								</button>
                             </td>
                         </tr>
                     </tbody>
