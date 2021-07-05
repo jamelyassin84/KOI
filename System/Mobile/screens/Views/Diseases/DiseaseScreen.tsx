@@ -7,13 +7,13 @@ import useColorScheme from '../../../hooks/useColorScheme';
 import Item from '../../../components/Placeholders/Item';
 import { FlatList } from 'react-native-gesture-handler';
 import HomeHeader from '../Home/HomeHeader';
-
+import { collection } from '../../../firebase/Collection';
+import Disease from './Disease'
 
 export default function DiseaseScreen() {
     const colorScheme = useColorScheme();
     const [ showSearch, setshowSearch ]: any = React.useState( false );
     const [ loading, setloading ]: any = React.useState( false );
-    const [ items, setitems ]: any = React.useState( [] );
     const [ show, setShow ] = React.useState( true )
     function scrollHandler( event: any ) {
         if ( event.nativeEvent.contentOffset.y > 1 ) {
@@ -23,13 +23,35 @@ export default function DiseaseScreen() {
         }
     }
 
-    const renderPlaceholder = () => (
+
+
+    React.useEffect( () => {
+        getKois()
+    }, [] )
+
+    const [ data, setData ]: any = React.useState( [] )
+    const getKois = () => {
+        let dataArray: any = []
+        collection( 'disease' ).get()
+            .then( ( snapshots ) => {
+                snapshots.forEach( ( doc: any ) => {
+                    dataArray.push( doc.data() )
+                } )
+                setData( dataArray )
+            } )
+    }
+
+
+    const renderPlaceholder = ( data: any = [ 1, 1, 1, 1, 1, 1, 1, 1 ] ) => (
         <Item />
     )
 
-    const renderItem = () => (
-        <View />
+    const renderItem = ( data: any ) => (
+        <Disease data={data} />
     )
+
+
+
 
     return (
         <View style={{ backgroundColor: Colors[ colorScheme ].background, flex: 1 }}>
@@ -69,9 +91,9 @@ export default function DiseaseScreen() {
                     scrollHandler( event )
                 }}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={items.index}
-                data={items.length == 0 ? [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] : items}
-                renderItem={items.length == 0 ? renderPlaceholder : renderItem}
+                keyExtractor={data.index}
+                data={data}
+                renderItem={data.length == 0 ? renderPlaceholder : renderItem}
                 numColumns={2}
             />
         </View>

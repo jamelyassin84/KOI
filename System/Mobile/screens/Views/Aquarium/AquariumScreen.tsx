@@ -7,7 +7,8 @@ import useColorScheme from '../../../hooks/useColorScheme';
 import Item from '../../../components/Placeholders/Item';
 import { FlatList } from 'react-native-gesture-handler';
 import HomeHeader from '../Home/HomeHeader';
-
+import Tank from './Tank'
+import { collection } from '../../../firebase/Collection';
 
 export default function AquariumScreen() {
     const colorScheme = useColorScheme();
@@ -22,14 +23,31 @@ export default function AquariumScreen() {
             setShow( true )
         }
     }
+    React.useEffect( () => {
+        getKois()
+    }, [] )
 
-    const renderPlaceholder = () => (
+    const [ data, setData ]: any = React.useState( [] )
+    const getKois = () => {
+        let dataArray: any = []
+        collection( 'tank' ).get()
+            .then( ( snapshots ) => {
+                snapshots.forEach( ( doc: any ) => {
+                    dataArray.push( doc.data() )
+                } )
+                setData( dataArray )
+            } )
+    }
+
+
+    const renderPlaceholder = ( data: any = [ 1, 1, 1, 1, 1, 1, 1, 1 ] ) => (
         <Item />
     )
 
-    const renderItem = () => (
-        <View />
+    const renderItem = ( data: any ) => (
+        <Tank data={data} />
     )
+
 
     return (
         <View style={{ backgroundColor: Colors[ colorScheme ].background, flex: 1 }}>
@@ -69,9 +87,9 @@ export default function AquariumScreen() {
                     scrollHandler( event )
                 }}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={items.index}
-                data={items.length == 0 ? [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] : items}
-                renderItem={items.length == 0 ? renderPlaceholder : renderItem}
+                keyExtractor={data.index}
+                data={data}
+                renderItem={data.length == 0 ? renderPlaceholder : renderItem}
                 numColumns={2}
             />
         </View>

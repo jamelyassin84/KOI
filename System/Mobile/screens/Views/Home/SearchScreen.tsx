@@ -84,7 +84,7 @@ export default function SearchScreen( props: any ) {
                                 value: searchResults
                             } )
                         }}
-                        placeholder='Koi Search' />
+                        placeholder='Search' />
                 </View>
                 <TouchableOpacity
                     onPress={() => {
