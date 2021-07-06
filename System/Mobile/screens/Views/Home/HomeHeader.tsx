@@ -30,7 +30,6 @@ export default function HomeHeader( props: any ) {
                     height: 20,
                     width: 20,
                     marginTop: 30,
-                    marginLeft: 20,
                     marginBottom: 20,
                     alignSelf: 'center',
                     transform: [

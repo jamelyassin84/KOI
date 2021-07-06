@@ -26,7 +26,8 @@ export default function ViewKoi( { route }: any ) {
 
     const getFood = () => {
         let dataArray: any = []
-        collection( 'food' ).get()
+        collection( 'food' )
+            .where( 'koi', '==', data.type ).get()
             .then( ( snapshots ) => {
                 snapshots.forEach( ( doc: any ) => {
                     dataArray.push( doc.data() )
@@ -37,7 +38,8 @@ export default function ViewKoi( { route }: any ) {
 
     const getDiseases = () => {
         let dataArray: any = []
-        collection( 'disease' ).get()
+        collection( 'disease' )
+            .where( 'koi', '==', data.type ).get()
             .then( ( snapshots ) => {
                 snapshots.forEach( ( doc: any ) => {
                     dataArray.push( doc.data() )
@@ -48,7 +50,8 @@ export default function ViewKoi( { route }: any ) {
 
     const getTanks = () => {
         let dataArray: any = []
-        collection( 'tank' ).get()
+        collection( 'tank' )
+            .where( 'koi', '==', data.type ).get()
             .then( ( snapshots ) => {
                 snapshots.forEach( ( doc: any ) => {
                     dataArray.push( doc.data() )
@@ -79,6 +82,10 @@ export default function ViewKoi( { route }: any ) {
 
 
                 <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Food</Text>
+                <Text style={[ food.length === 0 ? {} : {
+                    position: 'absolute',
+                    left: -500
+                }, { marginTop: 1, color: 'gray', fontSize: 20, } ]}>No food available for this koi yet..</Text>
                 {
                     food.map( ( food: any, index: any ) => (
                         <View key={index} style={{ marginTop: 30 }}>
@@ -92,6 +99,10 @@ export default function ViewKoi( { route }: any ) {
                 }
 
                 <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Diseases</Text>
+                <Text style={[ food.length === 0 ? {} : {
+                    position: 'absolute',
+                    left: -500
+                }, { marginTop: 1, color: 'gray', fontSize: 20, } ]}>No found diseases for this koi yet..</Text>
                 {
                     disease.map( ( disease: any, index: any ) => (
                         <View key={index}>
@@ -105,6 +116,10 @@ export default function ViewKoi( { route }: any ) {
                 }
 
                 <Text style={[ styles.name, { color: Colors[ colorScheme ].text } ]}>Tanks</Text>
+                <Text style={[ food.length === 0 ? {} : {
+                    position: 'absolute',
+                    left: -500
+                }, { marginTop: 1, color: 'gray', fontSize: 20, } ]}>No tank specifications available for this koi yet..</Text>
                 {
                     tanks.map( ( tank: any, index: any ) => (
                         <View key={index}>
